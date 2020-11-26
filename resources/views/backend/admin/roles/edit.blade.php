@@ -47,8 +47,11 @@
                             <input type="text" class="form-control" name="name" id="name" value="{{$role->name}}" required>
                         </div>
                         <div class="form-group">
-                            <h3>Permissions</h3><br>
-                            <ul>
+                            <h3>Permissions</h3>
+                            <p class="bg-info pl-3">
+                                <input type="checkbox" id="checkAll"> By a click you can select all
+                            </p>
+                            <ul style="height: 415px; overflow-y: scroll;">
                                 @foreach($permission as $per)
                                     <li>
                                         <label for="permission">
@@ -72,5 +75,10 @@
 
 @stop
 @push('js')
+    <script>
+        $("#checkAll").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+    </script>
 
 @endpush
