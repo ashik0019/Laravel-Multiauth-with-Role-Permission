@@ -86,7 +86,7 @@ class StaffController extends Controller
     {
         $staff = User::find($id);
         $roles = $roles = Role::all();
-        $userRole = $staff->roles->pluck('name','name')->all();
+        $userRole =  $userRole = $staff->roles->first();
         //dd($userRole);
         return view('backend.admin.staffs.edit', compact('roles','staff','userRole'));
 
